@@ -1,0 +1,24 @@
+services:
+  bdMysql:
+    image: mysql:9.2.0
+    mem_limit: 512m
+    mem_reservation: 128M
+    cpus: 0.5
+    container_name: bdEduc
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci','--default-authentication-plugin=mysql_native_password']
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${mysqlROOT}
+      MYSQL_DATABASE: ${mysqlBD}
+      MYSQL_USER: ${mysqlUSER}
+      MYSQL_PASSWORD: ${mysqlPWD}
+      TZ: America/Mexico_City
+    volumes:
+      - ./bd/:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+    networks:
+      - red-para-clase
+  
+networks:
+  red-para-clase:
