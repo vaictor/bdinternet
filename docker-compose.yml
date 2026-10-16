@@ -5,7 +5,7 @@ services:
     mem_reservation: 128M
     cpus: 0.5
     container_name: bdEduc
-    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci','--default-authentication-plugin=mysql_native_password']
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${mysqlROOT}
